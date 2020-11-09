@@ -9,7 +9,7 @@ admin.initializeApp({
 });
 const firebaseConfig = {
     apiKey: "AIzaSyBeyfzWGbPaWoZPPlcMCSGC3SC98vQo0iU",
-    authDomain: "localhost:3000",
+    authDomain: "https://appchatvue.herokuapp.com",
     databaseURL: "https://chatapp-20537.firebaseio.com",
     projectId: "chatapp-20537",
     storageBucket: "chatapp-20537.appspot.com",
