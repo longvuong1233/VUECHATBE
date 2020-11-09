@@ -22,8 +22,8 @@ const startRoutes = require("./routes/start")
 
 app.use("/start", startRoutes)
 
-app.get("/", () => {
-    console.log("ga")
+app.get("/", (req, res) => {
+    res.send("hello to my chat app api")
 })
 
 //handle error
