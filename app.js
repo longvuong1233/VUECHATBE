@@ -39,7 +39,7 @@ app.use((err, req, res, next) => {
 
 //start server
 
-const port = app.get("port") | 3000
-app.listen(port, () => {
-    console.log("server are running at port " + port)
-})
+// const port = app.get("port") | 3000
+// app.listen(port, () => {
+//     console.log("server are running at port " + port)
+// })
