@@ -1,4 +1,6 @@
 const db = require("../database/config")
+const mailer = require("../mailer/config")
+const ejs = require("ejs")
 
 
 const signup = (req, res, next) => {
@@ -60,19 +62,34 @@ const refreshToken = async(req, res, next) => {
 
 const emailVerification = async(req, res, next) => {
     try {
-        console.log("Dsa")
-        const actionCodeSettings = {
-            url: "https://www.youtube.com/watch?v=yO1rhOAeKMM",
-            handleCodeInApp: true
+
+        const email = db.firebase.auth().currentUser.email
+
+        const emailHTML = await ejs.renderFile(__dirname.replace("controller", "views") + "/verifyMail.ejs", { name: "hadinh" })
+        const mailOptions = {
+            from: process.env['NAME'] || "Appchat",
+            to: email,
+            subject: "Verification email!!",
+            html: emailHTML
         }
-        const result = await db.firebase.auth().sendSignInLinkToEmail(db.firebase.auth().currentUser.email, actionCodeSettings)
-
-
-        console.log(result)
+        mailer.sendMail(mailOptions, (err, info) => {
+            if (err) {
+                throw err
+            } else {
+                console.log("mes", info.response)
+                res.status(200).json({
+                    result: true
+                })
+            }
+        })
     } catch (error) {
-        console.log(error)
         next(error)
     }
+}
+
+const handlerEmail = (req, res, next) => {
+    console.log(req)
+    res.status(200).json({ ha: "Sds" })
 }
 
 
@@ -84,5 +101,6 @@ module.exports = {
     logout,
     checkAuth,
     refreshToken,
-    emailVerification
+    emailVerification,
+    handlerEmail
 }

@@ -8,6 +8,8 @@ const cors = require("cors")
 
 const app = new express()
 
+app.set("view engine", "ejs")
+
 
 //database
 
@@ -17,13 +19,16 @@ const app = new express()
 
 app.use(bodyParser.json())
 app.use(cors())
-    //routes
+
+
+
+//routes
 const startRoutes = require("./routes/start")
 
 app.use("/start", startRoutes)
 
 app.get("/", (req, res) => {
-    res.send("hello to my chat app api")
+    res.render("verifyMail")
 })
 
 //handle error
