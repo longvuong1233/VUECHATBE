@@ -1,5 +1,6 @@
 var admin = require("firebase-admin");
 const firebase = require("firebase");
+require("firebase/storage")
 
 var serviceAccount = require("../serviceAccountKey.json");
 
@@ -23,5 +24,6 @@ firebase.initializeApp(firebaseConfig)
 
 module.exports = {
     firebase,
-    admin
+    admin,
+    storage: firebase.storage()
 }

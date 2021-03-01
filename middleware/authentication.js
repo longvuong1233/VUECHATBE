@@ -2,6 +2,7 @@ const db = require("../database/config.js")
 
 module.exports = async(req, res, next) => {
     try {
+
         if (!req.headers.authorization || !req.headers.authorization.startsWith("Bearer ")) {
             throw "Unauthiorized"
         } else {
