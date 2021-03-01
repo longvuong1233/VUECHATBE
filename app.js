@@ -29,7 +29,7 @@ app.use("/start", startRoutes);
 app.use("/message", mesRoutes);
 app.use("/callvideo", callvideoRoutes);
 app.get("/", (req, res) => {
-  res.send("hello");
+  res.end("hello");
 });
 
 //handle error
