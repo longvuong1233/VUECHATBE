@@ -3,7 +3,7 @@ const https = require("https");
 var fs = require("fs");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const logger = require("morgan");
+// const logger = require("morgan");
 const fileUpload = require("express-fileupload");
 //initial
 
@@ -15,7 +15,7 @@ app.set("view engine", "ejs");
 
 //middlewares
 
-app.use(logger("dev"));
+// app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(fileUpload());
